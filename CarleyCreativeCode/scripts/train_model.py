@@ -11,11 +11,11 @@ def train():
     device = accelerator.device
 
     vocab_size = 32000
-    n_embd = 128
-    n_layer = 4
-    n_head = 4
-    block_size = 16 # Pequeño para que el ejemplo entre en el dataset
-    batch_size = 1
+    n_embd = 768
+    n_layer = 12
+    n_head = 12
+    block_size = 1024
+    batch_size = 8
     learning_rate = 5e-4
     epochs = 1
 
@@ -47,7 +47,20 @@ def train():
     if accelerator.is_main_process:
         unwrapped_model = accelerator.unwrap_model(model)
         torch.save(unwrapped_model.state_dict(), "CarleyCreativeCode/carley_model.pt")
-        print("Modelo guardado correctamente.")
+        # También guardar configuración para que transformers lo reconozca
+        import json
+        config_dict = {
+            "vocab_size": config.vocab_size,
+            "n_embd": config.n_embd,
+            "n_layer": config.n_layer,
+            "n_head": config.n_head,
+            "block_size": config.block_size,
+            "model_type": "gpt2"
+        }
+        with open("CarleyCreativeCode/config.json", "w") as f:
+            json.dump(config_dict, f)
+
+        print("Modelo y configuración guardados correctamente.")
 
 if __name__ == "__main__":
     train()

@@ -12,16 +12,8 @@ def main():
 
     args = parser.parse_args()
 
-    # Matching train_model config for testing
-    config_params = {
-        "vocab_size": 32000,
-        "n_embd": 128,
-        "n_layer": 4,
-        "n_head": 4,
-        "block_size": 16
-    }
-
-    carley = CarleyInference(args.model, args.tokens, config_params)
+    # CarleyInference now automatically loads config from config.json if it exists
+    carley = CarleyInference(args.model, args.tokens)
 
     if args.prefix and args.suffix:
         print("--- MODO CORRECCIÓN (FIM) ---")

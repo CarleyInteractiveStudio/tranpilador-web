@@ -1,4 +1,5 @@
 import torch
+import os
 from transformers import PreTrainedTokenizerFast
 from CarleyCreativeCode.src.model import CarleyCreativeCodeModel, Config
 
@@ -6,8 +7,20 @@ class CarleyInference:
     def __init__(self, model_path, tokenizer_path, config_params=None):
         self.tokenizer = PreTrainedTokenizerFast.from_pretrained(tokenizer_path)
 
-        # Default 125M config if not provided
-        if config_params is None:
+        # Load from config.json if available, otherwise use defaults
+        config_file = os.path.join(os.path.dirname(model_path), "config.json")
+        if os.path.exists(config_file):
+            import json
+            with open(config_file, "r") as f:
+                c_dict = json.load(f)
+                # Remove extra keys that Config doesn't accept
+                valid_keys = {"vocab_size", "n_embd", "n_layer", "n_head", "block_size", "dropout"}
+                c_dict = {k: v for k, v in c_dict.items() if k in valid_keys}
+                config = Config(**c_dict)
+        elif config_params is not None:
+            config = Config(**config_params)
+        else:
+            # Default 125M config
             config = Config(
                 vocab_size=32000,
                 n_embd=768,
@@ -15,8 +28,6 @@ class CarleyInference:
                 n_head=12,
                 block_size=1024
             )
-        else:
-            config = Config(**config_params)
 
         self.model = CarleyCreativeCodeModel(config)
 
@@ -53,8 +64,9 @@ class CarleyInference:
 
         full_text = self.tokenizer.decode(output_ids[0])
         # Extract only the middle part
-        try:
-            middle_part = full_text.split("<MID>")[1].split("<EOS>")[0]
+        if "<MID>" in full_text:
+            middle_part = full_text.split("<MID>")[-1]
+            if "<EOS>" in middle_part:
+                middle_part = middle_part.split("<EOS>")[0]
             return middle_part
-        except IndexError:
-            return full_text
+        return full_text
