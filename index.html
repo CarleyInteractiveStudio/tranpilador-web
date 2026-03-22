@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carley Creative Code AI | Creative Engine</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #0f172a;
+            color: #f8fafc;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        header {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            width: 100%;
+            padding: 3rem 0;
+            text-align: center;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 3rem;
+            margin: 0;
+            color: #38bdf8;
+            letter-spacing: -0.025em;
+        }
+        .container {
+            max-width: 900px;
+            padding: 2rem;
+        }
+        .card {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        .btn {
+            display: inline-block;
+            background: #38bdf8;
+            color: #0f172a;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.2s;
+            margin-right: 1rem;
+        }
+        .btn:hover {
+            background: #0ea5e9;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background: #475569;
+            color: #f8fafc;
+        }
+        .btn-secondary:hover {
+            background: #334155;
+        }
+        code {
+            background: #0f172a;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            color: #38bdf8;
+        }
+        pre {
+            background: #0f172a;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            border: 1px solid #334155;
+        }
+        footer {
+            margin-top: 4rem;
+            padding: 2rem;
+            text-align: center;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Carley Creative Code AI</h1>
+        <p>El primer asistente de IA diseñado exclusivamente para <strong>Creative Engine</strong></p>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2>¿Qué es Carley Creative Code?</h2>
+            <p>Es un modelo de lenguaje de última generación (Transformer) optimizado para generar, corregir y completar código de Creative Engine Scripting. Con solo <strong>~125M de parámetros</strong>, consume menos de 1GB de RAM, lo que lo hace perfecto para su integración local en Windows.</p>
+            <p>Soporta nativamente la sintaxis híbrida en español de Creative Engine:</p>
+            <pre><code>si (teclaPresionada("Space")) {
+    fisica.applyImpulse(nuevo Vector2(0, -fuerzaSalto));
+}</code></pre>
+        </div>
+
+        <div class="card">
+            <h2>Entrenamiento Potente</h2>
+            <p>Puedes entrenar el modelo con tus propias líneas de código usando nuestra infraestructura lista para <strong>Hugging Face</strong> y <strong>Google Colab</strong>. Soporta <code>Fill-In-The-Middle (FIM)</code> para correcciones de código en tiempo real.</p>
+            <div style="margin-top: 1.5rem;">
+                <a href="https://huggingface.co/new" class="btn">Subir a Hugging Face</a>
+                <a href="https://github.com/tu-usuario/tu-repo" class="btn btn-secondary">Ver en GitHub</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Instalación Rápida</h2>
+            <pre><code># Instala las dependencias
+pip install torch transformers accelerate
+
+# Inicia el entrenamiento
+python training/start_training.py</code></pre>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2024 Creative Engine AI System. Potenciado por Carley Creative Code.
+    </footer>
+</body>
+</html>

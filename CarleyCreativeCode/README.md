@@ -10,10 +10,11 @@ Este modelo está optimizado para:
 
 ## Estructura del Proyecto
 
-- `src/`: Código fuente de la arquitectura del modelo y utilidades.
-- `scripts/`: Scripts para entrenamiento, tokenización e inferencia.
-- `docs/`: Documentación detallada del sistema.
-- `data/`: Directorio para colocar los datasets de entrenamiento (500k+ líneas).
+- `CarleyCreativeCode/src/`: Código fuente de la arquitectura del modelo y utilidades.
+- `CarleyCreativeCode/scripts/`: Scripts para entrenamiento, tokenización e inferencia.
+- `CarleyCreativeCode/docs/`: Documentación detallada del sistema.
+- `CarleyCreativeCode/data/`: Directorio para colocar los datasets de entrenamiento (500k+ líneas).
+- `training/`: Acceso rápido al flujo de entrenamiento.
 
 ## Características Técnicas
 
